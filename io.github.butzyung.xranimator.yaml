@@ -26,7 +26,7 @@ finish-args:
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons # This is used to show the correct cursor on Wayland
 
 modules:
-  - name: XR Animator
+  - name: XR_Animator
     buildsystem: simple
     build-commands:
       - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
