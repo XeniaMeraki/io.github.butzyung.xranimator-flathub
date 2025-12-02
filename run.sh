@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-exec "$ELECTRON" /app/share/xranimator --no-sandbox "$@"
+exec /app/bin/electron /app/share/xranimator --no-sandbox "$@"
