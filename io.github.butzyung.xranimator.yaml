@@ -15,11 +15,9 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
   - --socket=wayland
-  - --fallback-socket=x11 # Base XR Animator only functions on X11, completely unsuitable for wayland via current codebase
+  - --socket=fallback-x11
   - --share=network # Access Network (Needed for VMC)
   - --share=ipc # Improves X11 performance
-  - --filesystem=xdg-videos:ro # Filesystem access for user file imports
-  - --filesystem=xdg-pictures:ro # Similarly
   - --talk-name=org.kde.StatusNotifierWatcher # Tray functionalities on KDE
   - --system-talk-name=org.freedesktop.NetworkManager
   - --talk-name=com.canonical.AppMenu.Registrar
