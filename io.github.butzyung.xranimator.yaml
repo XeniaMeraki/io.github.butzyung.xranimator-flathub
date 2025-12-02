@@ -28,33 +28,21 @@ finish-args:
 # We'll grab the electron app and compiled libraries from the zip for now
 # This is the wrong way to do this FIXME
 modules:
-  - name: xranimator-electron
+  - name: xranimator
     buildsystem: simple
     build-commands:
-      - mkdir -p tmp_extract
-      - bsdtar -xf XR-Animator_v0.33.0_linux-x64.zip -C tmp_extract
-      - mkdir -p /app/bin/xranimator-electron
-      - cp -av "tmp_extract/XR Animator - electron-v33.2.0-linux-x64_SA/." /app/bin/xranimator-electron/
-      - rm -rf tmp_extract
+      - mkdir -p /app/bin/xranimator # Make our directory
+      - unzip XR-Animator_v0.33.0_linux-x64.zip -d tmp_extract # Unzip and extract to a temp location
+      - cp -a tmp_extract/* /app/bin/xranimator/ # Copy all contents to our final location
+      - chmod +x /app/bin/xranimator/XR Animator - electron-v33.2.0-linux-x64_SA/electron # Make the electron executable
+      - rm -rf tmp_extract # Clean up 
+      - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop # Install .desktop for normal linux functionality
+      - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png # L-l-l-l-l-literal legend
+      - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
     sources:
-      - type: file
+      - type: archive
         url: https://github.com/ButzYung/SystemAnimatorOnline/releases/download/XR-Animator_v0.33.0/XR-Animator_v0.33.0_linux-x64.zip
         sha256: 0246ac535fbcc0e02a3969d0a1ce7055d68d3e2c8e24b4d4097da86625c87679
-
-  - name: XRAnimator
-    buildsystem: simple
-    build-commands:
-      - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
-      - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop # Install .desktop for normal linux functionality
-      - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png # Literal legend
-      - chmod +x /app/bin/xranimator-electron/electron
-      - mkdir -p /app/share/xranimator #Install entire upstream repo
-      - cp -a . /app/share/xranimator
-
-    sources:
-      - type: git
-        url: https://github.com/ButzYung/SystemAnimatorOnline
-        branch: master
       - type: file
         path: run.sh
       - type: file
