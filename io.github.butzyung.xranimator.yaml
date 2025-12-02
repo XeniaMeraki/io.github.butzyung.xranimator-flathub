@@ -21,18 +21,18 @@ finish-args:
   - --talk-name=com.canonical.AppMenu.Registrar
   - --device=all # Needed for GPU acceleration and the webcam
   - --filesystem=xdg-run/pipewire-0 # Pipewire interfacing
-  - --filesystem=~/.steam # Needed for SteamOS integration, as the XDG OpenURL portal doesn't work properly in Game Mode. We only need ~/.steam/steam.pipe but Flatpak can't correctly mount just that: 'File "/home/deck/.steam/steam.pipe" has unsupported type 0o10000'
+  - --filesystem=~/.steam # Needed for SteamOS integration, as the XDG OpenURL portal doesn't work properly in Game Mode. 
+  #We only need ~/.steam/steam.pipe but Flatpak can't correctly mount just that: 'File "/home/deck/.steam/steam.pipe" has unsupported type 0o10000'
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons # This is used to show the correct cursor on Wayland
 
 modules:
   - name: XR Animator
     buildsystem: simple
     build-commands:
-      - chmod +x electron
-      - install -Dm755 run.sh /app/bin/xranimator
-      - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop
-      - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png
-      - mkdir -p /app/share/xranimator
+      - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
+      - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop # Install .desktop for normal linux functionality
+      - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png # Literal legend
+      - mkdir -p /app/share/xranimator #Install entire upstream repo
       - cp -a . /app/share/xranimator
 
     sources:
