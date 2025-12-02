@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-exec /app/bin/electron /app/share/xranimator --no-sandbox "$@"
+exec zypak-wrapper /app/bin/xranimator-electron/electron /app/share/xranimator/index.html "$@"
