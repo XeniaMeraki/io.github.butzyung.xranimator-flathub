@@ -20,8 +20,3 @@ jobs:
           manifest-path: io.github.butzyung.xranimator.yaml
           bundle: io.github.butzyung.xranimator.flatpak
           cache-key: flatpak-build-${{ github.sha }}
-      - name: Upload Flatpak Bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: xranimator-flatpak
-          path: io.github.butzyung.xranimator.flatpak
