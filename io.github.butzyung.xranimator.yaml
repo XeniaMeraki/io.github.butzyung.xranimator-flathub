@@ -14,8 +14,7 @@ build-options:
 finish-args:
   - --socket=pulseaudio
   - --device=dri
-  - --socket=wayland
-  - --socket=fallback-x11
+  - --socket=x11
   - --share=network # Access Network (Needed for VMC)
   - --share=ipc # Improves X11 performance
   - --talk-name=org.kde.StatusNotifierWatcher # Tray functionalities on KDE
