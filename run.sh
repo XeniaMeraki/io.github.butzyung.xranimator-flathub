@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#! /usr/bin/sh
 cd /app/bin/xranimator/xr || exit
 /app/bin/xranimator/xr/electron --no-sandbox --ozone-platform-hint=auto "$@"
 
