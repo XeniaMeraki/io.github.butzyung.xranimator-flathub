@@ -14,7 +14,8 @@ build-options:
 finish-args:
   - --socket=pulseaudio
   - --device=dri
-  - --socket=x11 # Base XR Animator only functions on X11, completely unsuitable for wayland via current codebase
+  - --socket=wayland
+  - --fallback-socket=x11 # Base XR Animator only functions on X11, completely unsuitable for wayland via current codebase
   - --share=network # Access Network (Needed for VMC)
   - --share=ipc # Improves X11 performance
   - --filesystem=xdg-videos:ro # Filesystem access for user file imports
