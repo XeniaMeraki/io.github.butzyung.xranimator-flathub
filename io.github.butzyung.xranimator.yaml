@@ -39,3 +39,7 @@ modules:
       - type: git
         url: https://github.com/ButzYung/SystemAnimatorOnline
         branch: master
+      - type: file
+        path: run.sh
+      - type: file
+        path: io.github.butzyung.xranimator.desktop
