@@ -6,7 +6,10 @@ sdk: org.freedesktop.Sdk
 
 base: org.electronjs.Electron2.BaseApp
 base-version: "25.08"
-command: xranimator
+command: /app/bin/xranimator/run.sh
+build-options:
+  strip: false
+  no-debuginfo: true
 
 finish-args:
   - --socket=pulseaudio
@@ -33,7 +36,8 @@ modules:
     build-commands:
       - mkdir -p /app/bin/xranimator # Make our directory
       - unzip XR-Animator_v0.33.0_linux-x64.zip -d /app/bin/xranimator/ # Unzip contents of zip over from build directory to final files setup
-      - chmod +x "/app/bin/xranimator/XR Animator - electron-v33.2.0-linux-x64_SA/electron" # Make the electron executable, quotes needed for spaces in filename
+      - mv "/app/bin/xranimator/XR Animator"* /app/bin/xranimator/xr
+      - chmod +x "/app/bin/xranimator/xr/electron" # Make the electron executable, quotes needed for spaces in filename
       - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop # Install .desktop for normal linux functionality
       - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png # L-l-l-l-l-literal legend
       - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
