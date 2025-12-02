@@ -37,6 +37,7 @@ modules:
       - install -Dm644 io.github.butzyung.xranimator.desktop /app/share/applications/io.github.butzyung.xranimator.desktop # Install .desktop for normal linux functionality
       - install -Dm644 icon.png /app/share/icons/hicolor/512x512/apps/io.github.butzyung.xranimator.png # L-l-l-l-l-literal legend
       - install -Dm755 run.sh /app/bin/xranimator # Install launcher wrapper
+      - chmod +x /app/bin/xranimator # Safety first~
     sources:
       - type: file
         url: https://github.com/ButzYung/SystemAnimatorOnline/releases/download/XR-Animator_v0.33.0/XR-Animator_v0.33.0_linux-x64.zip
